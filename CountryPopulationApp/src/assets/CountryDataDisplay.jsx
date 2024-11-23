@@ -6,7 +6,7 @@ function CountryDataDisplay(props){
     const [specifiedPopulation, setSpecifiedPopulation] = useState([]);
     var returnHTML;
     const populationApi = 'https://countriesnow.space/api/v0.1/countries/population/cities';
-    
+
     useEffect(() => {
       async function getData(){
         const response = await fetch(populationApi);
