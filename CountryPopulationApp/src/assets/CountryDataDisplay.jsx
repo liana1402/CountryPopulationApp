@@ -5,7 +5,14 @@ function CountryDataDisplay(props){
     const [population, setPopulation] = useState([]);
     const [specifiedPopulation, setSpecifiedPopulation] = useState([]);
     var returnHTML;
+    var flagInput = "";
     const populationApi = 'https://countriesnow.space/api/v0.1/countries/population/cities';
+
+    const setInputFlag = (() => {
+        if(props.selectedFlag !== undefined){
+            flagInput = <img src={props.selectedFlag.flag}/>
+        }
+    })()
 
     useEffect(() => {
       async function getData(){
@@ -43,7 +50,7 @@ function CountryDataDisplay(props){
 
         returnHTML = 
             <div className="country-data-display-container">
-                <p className="data-title">Population of <span className="title-country">{props.selectedCountry.name}</span> is: </p>
+                <p className="data-title">Population of <span className="title-country">{props.selectedCountry.name} {flagInput}</span> is: </p>
                 <div className="data">
                     {specifiedPopulation.map( p => 
                         <><h3 className="city" key={p.city}>{p.city}<br/></h3> 
@@ -55,7 +62,7 @@ function CountryDataDisplay(props){
             </div>
     }
     else{
-        returnHTML = <p className="data-title">There is no population data on <span className="title-country">{props.selectedCountry.name}</span>. </p>
+        returnHTML = <p className="data-title">There is no population data on <span className="title-country">{props.selectedCountry.name} {flagInput}</span>. </p>
     }
 
     return(

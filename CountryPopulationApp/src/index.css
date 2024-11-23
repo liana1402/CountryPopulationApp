@@ -23,6 +23,9 @@
     font-weight: 600;
     color: #2d3228;
 }
+.title-country img{
+    width: 30px;
+}
 .data{
     display: flex;
     flex-direction: column;
@@ -30,7 +33,7 @@
     margin: auto;
     margin-bottom: 40px;
     width: fit-content;
-    min-width: 200px;
+    min-width: 300px;
     padding: 10px 35px 25px;
     text-align: left;
     background-color: #333D29;
