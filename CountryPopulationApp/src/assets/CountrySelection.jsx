@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CountryDataDisplay from "./CountryDataDisplay";
 
 function CountrySelection(props){
-    if (props.countries !== undefined)
+    if (props.countries !== undefined && props.flags !== undefined)
     {
         var [selectedCountry, setSelectedCountry] = useState(props.countries[0]);
 
