@@ -1,19 +1,21 @@
 import React, { useState, useEffect, useCallback } from "react";
 
 function CountryDataDisplay(props){
-
+    // variables
     const [population, setPopulation] = useState([]);
     const [specifiedPopulation, setSpecifiedPopulation] = useState([]);
     var returnHTML;
     var flagInput = "";
     const populationApi = 'https://countriesnow.space/api/v0.1/countries/population/cities';
 
+    // set flagInput variable function with validation
     const setInputFlag = (() => {
         if(props.selectedFlag !== undefined){
             flagInput = <img src={props.selectedFlag.flag}/>
         }
     })()
 
+    // get population data
     useEffect(() => {
       async function getData(){
         const response = await fetch(populationApi);
@@ -26,6 +28,7 @@ function CountryDataDisplay(props){
     // console.log("population",population.data)
     // console.log(population.data.filter(p => p.country === props.selectedCountry.name))
     
+    //set specified population variable accordingly
     useEffect(() => {
         if(population.data !== undefined){
             if (population.data.some(p => p.country === props.selectedCountry.name)) {
@@ -40,6 +43,7 @@ function CountryDataDisplay(props){
         }
     }, [props.selectedCountry.name, population.data]);
 
+    //set returnHTML according to result of setSpecifiedPopulation
     if(specifiedPopulation.length > 0 && specifiedPopulation[0] !== undefined){
         // console.log("success", specifiedPopulation)
 
@@ -55,7 +59,7 @@ function CountryDataDisplay(props){
                     {specifiedPopulation.map( p => 
                         <><h3 className="city" key={p.city}>{p.city}<br/></h3> 
                         {getPopulationCounts(p.city).map(d => 
-                            <p className="population"><span className="data-types">Year:</span> {d.year} <br/> <span className="data-types">Population:</span> {d.value}</p>
+                            <p className="population"><span className="data-types">Year:</span> {d.year} <br/> <span className="data-types">Population:</span> {d.value} <br/> <span className="data-types">Data collected on:</span> {d.sex}</p>
                         )} <hr/></>
                     )}
                 </div> 

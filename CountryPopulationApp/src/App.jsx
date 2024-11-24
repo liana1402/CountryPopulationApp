@@ -3,11 +3,13 @@ import './App.css'
 import CountrySelection from './assets/CountrySelection'
 
 function App() {
+  // variables
   const [countries, setCountries] = useState([]);
   const [flags, setFlags] = useState([]);
   const countriesApi = 'https://countriesnow.space/api/v0.1/countries/capital';
   const flagsApi = 'https://countriesnow.space/api/v0.1/countries/flag/images';
 
+  // get countries data
   useEffect(() => {
     async function getData(){
       const response = await fetch(countriesApi);
@@ -17,6 +19,7 @@ function App() {
     getData();
   }, []);
 
+  // get flags data
   useEffect(() => {
     async function getData(){
       const response = await fetch(flagsApi);
@@ -27,9 +30,7 @@ function App() {
   }, []);
 
   return (
-    <>
       <CountrySelection countries={countries.data} flags={flags.data}/>
-    </>
   )
 }
 

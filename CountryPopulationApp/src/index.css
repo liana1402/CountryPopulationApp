@@ -1,3 +1,4 @@
+/* country selection */
 .country-selection-container{
     margin-top: 50px;
 }
@@ -15,6 +16,7 @@
     max-width: 90vw;
 }
 
+/* country data display */
 .data-title{
     margin-top: 50px;
     font-size: 25px;

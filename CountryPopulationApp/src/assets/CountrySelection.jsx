@@ -4,8 +4,10 @@ import CountryDataDisplay from "./CountryDataDisplay";
 function CountrySelection(props){
     if (props.countries !== undefined && props.flags !== undefined)
     {
+        // variables
         var [selectedCountry, setSelectedCountry] = useState(props.countries[0]);
 
+        // change selection event function
         const changeSelection = (e) => {
             setSelectedCountry(props.countries.filter(c => c.name == e.target.value)[0]);
             // console.log(e.target.value)
